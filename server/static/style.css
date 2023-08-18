@@ -1,8 +1,94 @@
-html {
+
+
+/* GLOBAL RULES */
+
+
+html,
+body {
     box-sizing: border-box;
+    height: 100%;
 }
 
-body {
-    height: 100%;
+body, h1, h2, h3, ul {
     margin: 0;
+    padding: 0;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* FLEX CLASSES */
+
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.gap-small {
+    gap: 4px;
+}
+
+.gap-medium {
+    gap: 12px;
+}
+
+.gap-large {
+    gap: 24px;
+}
+
+
+/* TEXT CLASSES */
+
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.text-xl {
+    font-size: 5rem;
+}
+
+.text-l {
+    font-size: 3rem;
+}
+
+.text-m {
+    font-size: 1.75rem;
+}
+
+.text-s {
+    font-size: 1rem;
+}
+
+.text-bold {
+    font-weight: 800;
+}
+
+.text-center {
+    text-align: center;
+}
+
