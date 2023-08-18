@@ -92,3 +92,36 @@ a {
     text-align: center;
 }
 
+
+/* BASE TEMPLATE RULES */
+
+
+nav {
+    background-color: #111827;
+    color: #fff;
+}
+
+#nav-container {
+    max-width: 800px;
+    padding: 10px;
+}
+
+#nav-container ul {
+    list-style: none;
+}
+
+#logo {
+    border-left: solid white 1px;
+    border-right: solid white 1px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#logo img {
+    height: 2em;
+    width: 2em;
+}
+
+.content {
+    height: 100%;
+}
