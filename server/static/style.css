@@ -9,7 +9,7 @@ body {
     height: 100%;
 }
 
-body, h1, h2, h3, ul {
+body, h1, h2, h3, p, ul {
     margin: 0;
     padding: 0;
 }
@@ -54,7 +54,7 @@ button {
 }
 
 .gap-small {
-    gap: 4px;
+    gap: 6px;
 }
 
 .gap-medium {
@@ -115,6 +115,10 @@ nav {
     color: #fff;
 }
 
+nav a:hover:not(:nth-child(2)) {
+    color: #bbb;
+}
+
 #nav-container {
     max-width: 800px;
     padding: 10px;
@@ -122,6 +126,16 @@ nav {
 
 #nav-container ul {
     list-style: none;
+}
+
+#nav-container li:not(:first-child)::before { /* Add divider between links */
+    content: "/";
+    padding: 0 12px 0 0;
+}
+
+#nav-container img {
+    height: 1.1em;
+    width: 1.1em;
 }
 
 #logo {
@@ -134,6 +148,10 @@ nav {
 #logo img {
     height: 2em;
     width: 2em;
+}
+
+li {
+    text-align: center;
 }
 
 .content {
