@@ -42,6 +42,18 @@ class Fleet:
         self.cruiser = Ship(3) #: Ship of size 3
         self.destroyer = Ship(2) #: Ship of size 2
 
+    def is_destroyed(self):
+        """Checks if all the fleet's ships have been sunk
+        
+        Returns:
+            bool: True if the whole fleet has been sunk, False otherwise
+        """
+        return (self.carrier.is_sunk() and 
+            self.battleship.is_sunk() and
+            self.submarine.is_sunk() and
+            self.cruiser.is_sunk() and
+            self.destroyer.is_sunk())
+
 
 class Gameboard:
     """A class used to represent a battleship gameboard"""
