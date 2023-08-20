@@ -215,3 +215,13 @@ class Gameboard:
         
         if hit_square == "S":
             return hit()
+        
+    def is_fleet_destroyed(self):
+        """Checks if this board's fleet has been destroted
+
+        Calls the is_destroyed method on the fleet to check
+        
+        Returns:
+            bool: True if the whole fleet has been sunk, False otherwise
+        """
+        return self.fleet.is_destroyed()
