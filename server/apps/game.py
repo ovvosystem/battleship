@@ -98,3 +98,19 @@ class Gameboard:
             self.board.append([])
             for j in range(size):
                 self.board[i].append("~")
+    
+    def is_placement_valid(self, coordinates):
+        """Checks if a list of coordinates for a ship's placement are free
+
+        Args:
+            coordinates (list of list): A list containing different coordinates represented 
+                                        as [row, column]
+
+        Returns:
+            bool: True if all the coordinates are free, False otherwise
+        """
+        for coordinate in coordinates:
+            if self.board[coordinate[0]][coordinate[1]] != "~":
+                return False
+        
+        return True
