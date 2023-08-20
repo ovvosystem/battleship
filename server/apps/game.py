@@ -170,3 +170,19 @@ class Gameboard:
             ship.set_coordinates(coordinates)
             for coordinate in coordinates:
                 self.board[coordinate[0]][coordinate[1]] = "S"
+
+    def attack_coordinate(self, coordinate):
+        """Attacks the specified coordinate
+        
+        Updates the board to represent the attacked coordinate and, if an attack hits a ship,
+        calls the ship.hit() function 
+
+        Args:
+            coordinate (list): A [row, column] list representing a coordinate in the board
+
+        Returns:
+            bool: True if the coordinates for an attack are valid, False otherwise
+        """
+        hit_square = self.board[coordinate[0]][coordinate[1]]
+        if (hit_square == "O" or hit_square == "X"):
+            return False
