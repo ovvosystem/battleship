@@ -107,6 +107,28 @@ class Gameboard:
                 board[i].append("~")
 
         return board
+    
+    def get_board(self):
+        """Gets the game's board list representation
+        
+        Returns:
+            list of list: self.board
+        """
+        return self.board
+    
+    def get_secret_board(self):
+        """Gets the game's board list representation without the ship's positions
+        
+        Returns:
+            list of list: self.board without ship positions
+        """
+        secret_board = self.board.copy()
+        for row in range(len(secret_board)):
+            for column in range(len(secret_board)):
+                if secret_board[row][column] == "S":
+                    secret_board[row][column] = "~"
+
+        return secret_board
 
     def place_fleet(self):
         """Positions the fleet on the board randomly
