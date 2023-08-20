@@ -183,6 +183,20 @@ class Gameboard:
         Returns:
             bool: True if the coordinates for an attack are valid, False otherwise
         """
+
+        def miss():
+            """Represents a miss in the gameboard with an 'O'
+            
+            Returns:
+                bool: True
+            """
+            self.board[coordinate[0]][coordinate[1]] = "O"
+            return True
+    
         hit_square = self.board[coordinate[0]][coordinate[1]]
+
         if (hit_square == "O" or hit_square == "X"):
             return False
+        
+        if hit_square == "~":
+            return miss()
