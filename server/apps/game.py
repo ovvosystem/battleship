@@ -165,7 +165,7 @@ class Gameboard:
         Returns:
             None
         """
-        for name, ship in self.fleet.__dict__.items():
+        for ship in self.fleet.__dict__.values():
             coordinates = self.find_ship_coordinates(ship)
             ship.set_coordinates(coordinates)
             for coordinate in coordinates:
