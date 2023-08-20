@@ -17,3 +17,11 @@ class Ship:
             None
         """
         self.times_hit += 1
+
+    def is_sunk(self):
+        """Checks if the ship has been sunk
+        
+        Returns:
+            bool: True if it has been sunk, False otherwise
+        """
+        return self.times_hit == self.size
