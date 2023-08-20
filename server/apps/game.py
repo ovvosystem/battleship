@@ -27,6 +27,22 @@ class Ship:
         return self.times_hit == self.size
     
 
+class Fleet:
+    """A class to represent a player's full fleet
+    
+    fleets consist of a carrier (size 5), a battleship (size 4), a submarine (size 3),
+    a cruiser (size 3), and a destroyer (size 2)
+    """
+
+    def __init__(self):
+        """Constructor method"""
+        self.carrier = Ship(5) #: Ship of size 5
+        self.battleship = Ship(4) #: Ship of size 4
+        self.submarine = Ship(3) #: Ship of size 3
+        self.cruiser = Ship(3) #: Ship of size 3
+        self.destroyer = Ship(2) #: Ship of size 2
+
+
 class Gameboard:
     """A class used to represent a battleship gameboard"""
 
