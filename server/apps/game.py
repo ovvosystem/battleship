@@ -193,6 +193,18 @@ class Gameboard:
             self.board[coordinate[0]][coordinate[1]] = "O"
             return True
     
+        def hit():
+            """Represents a hit in the gameboard with an 'X' and calls the ship.hit() function
+            
+            Returns:
+                bool: True
+            """
+            for ship in self.fleet.__dict__.values():
+                if coordinate in ship.coordinates:
+                    ship.hit()
+            self.board[coordinate[0]][coordinate[1]] = "X"
+            return True
+
         hit_square = self.board[coordinate[0]][coordinate[1]]
 
         if (hit_square == "O" or hit_square == "X"):
@@ -200,3 +212,6 @@ class Gameboard:
         
         if hit_square == "~":
             return miss()
+        
+        if hit_square == "S":
+            return hit()
