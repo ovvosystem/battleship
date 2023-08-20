@@ -34,6 +34,14 @@ class Ship:
             None
         """
         self.coordinates = coordinates
+
+    def get_coordinates(self):
+        """Gets the ship's coordinates
+        
+        Returns:
+            list: self.coordinates
+        """
+        return self.coordinates
     
 
 class Fleet:
