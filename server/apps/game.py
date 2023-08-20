@@ -9,3 +9,11 @@ class Ship:
         """
         self.size = size
         self.times_hit = 0 #: Number of times ship has been hit
+    
+    def hit(self):
+        """Increments the times_hit instance attribute
+
+        Returns:
+            None
+        """
+        self.times_hit += 1
