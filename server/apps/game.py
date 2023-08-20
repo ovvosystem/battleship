@@ -1,3 +1,5 @@
+from random import choice, randrange
+
 class Ship:
     """A class used to represent a ship"""
 
@@ -114,3 +116,35 @@ class Gameboard:
                 return False
         
         return True
+
+    def find_ship_coordinates(self, ship):
+        """Finds valid coordinates for the ship's placement
+
+        Args:
+            ship (Ship): A ship of a player's fleet
+
+        Returns:
+            list: list of coordinates valid for the ship's placement
+        """
+        direction = choice(["horizontal", "vertical"])
+        offset = ship.size
+
+        if direction == "horizontal":
+            while True:
+                # The initial square of the ship's coordinates
+                [row, column] = [randrange(0, 10), randrange(0, 10 - offset)]
+                # The full range of the ship's coordinates
+                coordinates = [[row, column + i] for i in range(offset)]
+
+                if (self.is_placement_valid(coordinates)):
+                    return coordinates
+
+        elif direction == "vertical":
+            while True:
+                # The initial square of the ship's coordinates
+                [row, column] = [randrange(0, 10 - offset), randrange(0, 10)]
+                # The full range of the ship's coordinates
+                coordinates = [[row + i, column] for i in range(offset)]
+
+                if (self.is_placement_valid(coordinates)):
+                    return coordinates
