@@ -83,9 +83,7 @@ class Gameboard:
         #: board (list of list): An empty list, to be constructed into a full gameboard
         #: in create_board method
         self.board = []
-
-        #: ships (dict of Ship: list): An empty dict, to be expanded by the create_ship method
-        self.ships = {}
+        self.fleet = Fleet() #: Fleet object representing this board's fleet
 
     def create_board(self, size):
         """Creates a list of list presentation of the gameboard
