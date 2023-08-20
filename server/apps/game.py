@@ -9,6 +9,7 @@ class Ship:
         """
         self.size = size
         self.times_hit = 0 #: Number of times ship has been hit
+        self.coordinates = [] #: A list of the ship's coordinates, initially empty
     
     def hit(self):
         """Increments the times_hit instance attribute
@@ -25,6 +26,14 @@ class Ship:
             bool: True if it has been sunk, False otherwise
         """
         return self.times_hit == self.size
+    
+    def set_coordinates(self, coordinates):
+        """Sets the ship's coordinates
+        
+        Returns:
+            None
+        """
+        self.coordinates = coordinates
     
 
 class Fleet:
