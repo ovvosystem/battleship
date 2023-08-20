@@ -35,9 +35,23 @@ class Gameboard:
         
         Initializes attributes to be constructed in other methods
         """
-        #: board (list of list): An empty list of lists, to be constructed into a full gameboard
+        #: board (list of list): An empty list, to be constructed into a full gameboard
         #: in create_board method
-        self.board = [[]]
+        self.board = []
 
         #: ships (dict of Ship: list): An empty dict, to be expanded by the create_ship method
         self.ships = {}
+
+    def create_board(self, size):
+        """Creates a list of list presentation of the gameboard
+        
+        Args:
+            size (int): The size of the square board
+
+        Returns:
+            None
+        """
+        for i in range(size):
+            self.board.append([])
+            for j in range(size):
+                self.board[i].append("~")
