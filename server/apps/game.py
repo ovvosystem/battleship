@@ -25,3 +25,19 @@ class Ship:
             bool: True if it has been sunk, False otherwise
         """
         return self.times_hit == self.size
+    
+
+class Gameboard:
+    """A class used to represent a battleship gameboard"""
+
+    def __init__(self):
+        """Constructor method
+        
+        Initializes attributes to be constructed in other methods
+        """
+        #: board (list of list): An empty list of lists, to be constructed into a full gameboard
+        #: in create_board method
+        self.board = [[]]
+
+        #: ships (dict of Ship: list): An empty dict, to be expanded by the create_ship method
+        self.ships = {}
