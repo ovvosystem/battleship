@@ -75,16 +75,20 @@ class Fleet:
 
 
 class Gameboard:
-    """A class used to represent a battleship gameboard"""
+    """A class used to represent a battleship gameboard
+    
+    Attributes:
+        SIZE (int): board size constant
+    """
+
+    SIZE = 10
 
     def __init__(self):
         """Constructor method
         
         Initializes attributes to be constructed in other methods
         """
-        #: board (list of list): An empty list, to be constructed into a full gameboard
-        #: in create_board method
-        self.board = []
+        self.board = self.create_board(Gameboard.SIZE) #: list of list representation of the gameboard
         self.fleet = Fleet() #: Fleet object representing this board's fleet
 
     def create_board(self, size):
@@ -94,12 +98,15 @@ class Gameboard:
             size (int): The size of the square board
 
         Returns:
-            None
+            list of list: A representation of the gameboard
         """
+        board = []
         for i in range(size):
-            self.board.append([])
+            board.append([])
             for j in range(size):
-                self.board[i].append("~")
+                board[i].append("~")
+
+        return board
     
     def is_placement_valid(self, coordinates):
         """Checks if a list of coordinates for a ship's placement are free
