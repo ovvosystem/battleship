@@ -148,3 +148,18 @@ class Gameboard:
 
                 if (self.is_placement_valid(coordinates)):
                     return coordinates
+
+    def place_fleet(self):
+        """Positions the fleet on the board randomly
+        
+        Args:
+            fleet (Fleet): A player's fleet
+            
+        Returns:
+            None
+        """
+        for name, ship in self.fleet.__dict__.items():
+            coordinates = self.find_ship_coordinates(ship)
+            ship.set_coordinates(coordinates)
+            for coordinate in coordinates:
+                self.board[coordinate[0]][coordinate[1]] = "S"
