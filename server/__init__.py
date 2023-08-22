@@ -1,4 +1,4 @@
-from os import environ as env
+from os import path, environ as env
 
 from dotenv import find_dotenv, load_dotenv
 from flask import Flask
@@ -27,4 +27,20 @@ def create_app():
     from server.views import views
     app.register_blueprint(views, url_prefix="/")
 
+    from server.models import User
+
+    create_database(app)
+
     return app
+
+
+def create_database(app):
+    """Creates database if it doesn't exist
+    
+    Returns:
+        None
+    """
+    if not path.exists(f'instance/{DB_NAME}'):
+        with app.app_context():
+            db.create_all()
+        print("Database Created")
