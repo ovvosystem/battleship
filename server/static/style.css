@@ -208,3 +208,38 @@ li {
     transform: scale(1.15);
     background-color: #030920;
 }
+
+
+/* AUTHENTICATION FORM RULES */
+
+
+.form {
+    max-width: 500px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #111827;
+    border-radius: 10px;
+}
+
+.form-item {
+    margin: 10px;
+}
+
+.form-item input {
+    padding: 4px;
+    font-size: 1rem;
+}
+
+.form button {
+    max-width: 200px;
+    margin: 20px;
+    padding: 10px;
+
+    background-color: #202944;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
