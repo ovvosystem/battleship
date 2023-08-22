@@ -137,6 +137,10 @@ nav a:hover:not(:nth-child(2)) {
     padding: 0 12px 0 0;
 }
 
+#nav-container strong {
+    font-size: 1.125rem
+}
+
 #nav-container img {
     height: 1.1em;
     width: 1.1em;

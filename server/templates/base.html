@@ -28,7 +28,7 @@
             <ul class="flex flex-1 flex-start gap-medium">
                 {% if user.is_authenticated %}
                     <li><span>Welcome, <strong>{{ user.username }}</strong></span></li>
-                    <li><a href="/auth/logout">Log Out</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
                 {% else %}
                     <li><a href="/auth/register">Register</a></li>
                     <li><a href="/auth/login">Login</a></li>
