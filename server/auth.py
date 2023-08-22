@@ -15,7 +15,9 @@ def register():
     password = request.form.get("password")
     confirm_password = request.form.get("confirm-password")
 
-    if len(username) < 4:
+    if User.query.filter_by(username=username).first():
+        flash("Username already taken", category="error")
+    elif len(username) < 4:
         flash("Username must be at least 4 characters long", category="error")
     elif len(password) < 8:
         flash("Password must be at least 8 characters long", category="error")
