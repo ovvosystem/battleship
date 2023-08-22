@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %}
+{% block content %}
+<span class="background flex flex-center">
+    <div class="form flex flex-1 flex-center">
+        <form method="POST" class="flex flex-1 flex-column font-roboto">
+            <h2 class="text-l text-center text-bold">Login</h2>
+            <div class="form-item flex flex-1 flex-column gap-small">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-item flex flex-1 flex-column gap-small">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="flex flex-center">
+                <button type="submit" class="flex-1 text-m text-bold">LOGIN</button>
+            </div>
+        </form>
+    </div>
+</span>
+{% endblock %}
