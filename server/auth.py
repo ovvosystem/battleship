@@ -26,7 +26,7 @@ def register():
         flash("Passwords don't match", category="error")
     else:
         new_user = User(username=username, 
-                        password=generate_password_hash(password, method="sha256"))
+                        password=generate_password_hash(password, method="scrypt"))
         try:
             db.session.add(new_user)
             db.session.commit()
