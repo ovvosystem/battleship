@@ -53,6 +53,10 @@ button {
     flex-direction: column;
 }
 
+.item-center {
+    align-self: center;
+}
+
 .gap-small {
     gap: 6px;
 }
@@ -242,4 +246,29 @@ li {
     border-radius: 10px;
 
     cursor: pointer;
+}
+
+
+/* ALERT RULES */
+
+
+.alert {
+    font-size: 1.25rem;
+    padding: 12px;
+    color: #fff;
+}
+
+.alert-error {
+    max-width: 300px;
+    margin: 15px;
+    background-color: #dd4949;
+    border-radius: 5px;
+}
+
+.alert-success {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #35a535
 }
