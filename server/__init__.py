@@ -4,11 +4,12 @@ from dotenv import find_dotenv, load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-# Loads environment variables
+# Load environment variables
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
 
+# Database variables
 db = SQLAlchemy()
 DB_NAME = env.get("DB_NAME")
 
