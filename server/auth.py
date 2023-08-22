@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, redirect, flash
 
 auth = Blueprint("auth", __name__)
 
@@ -19,7 +19,7 @@ def register():
         flash("Passwords don't match", category="error")
     else:
         flash("Account created!", category="success")
-        return render_template("index.html")
+        return redirect("/")
 
     return render_template("register.html")
 
