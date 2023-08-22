@@ -4,6 +4,15 @@
     <div class="form flex flex-1 flex-center">
         <form method="POST" class="flex flex-1 flex-column font-roboto">
             <h2 class="text-l text-center text-bold">Login</h2>
+
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                {% for message in errors %}
+                    <div class="alert alert-error item-center"><strong>Error:</strong> {{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            
             <div class="form-item flex flex-1 flex-column gap-small">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Username">
