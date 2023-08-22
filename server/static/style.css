@@ -200,8 +200,8 @@ li {
     border: none;
     border-radius: 10px;
 
-    /* Animate button on hover */
-    transition: all .2s ease-in-out;
+    cursor: pointer;
+    transition: all .2s ease-in-out; /* Animate button on hover */
 }
 
 #mode-selection button:hover {
