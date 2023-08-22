@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, flash
+from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from server.models import User
@@ -29,6 +30,7 @@ def register():
         try:
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user, remember=True)
 
             flash("Account created!", category="success")
             return redirect("/")
@@ -48,6 +50,7 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user:
         if check_password_hash(user.password, password):
+            login_user(user, remember=True)
             flash("Logged in succesfully!", category="success")
             return redirect("/")
         else:
