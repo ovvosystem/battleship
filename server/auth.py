@@ -10,7 +10,7 @@ auth = Blueprint("auth", __name__)
 @auth.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
-        return render_template("register.html")
+        return render_template("register.html", user=current_user)
     
     username = request.form.get("username")
     password = request.form.get("password")
@@ -37,12 +37,12 @@ def register():
         except:
             flash("An error occurred saving the user to database")
 
-    return render_template("register.html")
+    return render_template("register.html", user=current_user)
 
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        return render_template("login.html")
+        return render_template("login.html", user=current_user)
     
     username = request.form.get("username")
     password = request.form.get("password")
@@ -58,7 +58,7 @@ def login():
     else:
         flash("Username does not exist", category="error")
 
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
 
 @auth.route("/logout")
 @login_required
