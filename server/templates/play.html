@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Play{% endblock %}
+{% block content %}
+<span class="background flex flex-center">
+    <div id="room-options" class="flex flex-1 flex-center font-roboto">
+        <div class="create-room flex flex-center">
+            <form class="button-container flex flex-1">
+                <button class="flex-1 text-m"><h2>CREATE ROOM</h2></button>
+            </form>
+        </div>
+        <div class="divider flex flex-center text-l text-bold">OR</div>
+        <div class="join-room flex flex-center text-m">
+            <form class="flex flex-1 flex-column gap-large">
+                <div class="flex flex-1 flex-column flex-center gap-medium">
+                    <label for="code" class="text-l text-bold text-center">Code:</label>
+                    <input class="text-center text-bold" type="text" maxlength="6">
+                </div>
+                <button class="flex-1 text-m"><h2>JOIN</h2></button>
+            </form>
+        </div>
+    </div>
+</span>
+{% endblock %}
