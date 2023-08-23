@@ -30,6 +30,8 @@ def register():
         flash("Username already taken", category="error")
     elif len(username) < 4:
         flash("Username must be at least 4 characters long", category="error")
+    elif len(username) > 20:
+        flash("Username cannot be longer than 20 characters", category="error")
     elif len(password) < 8:
         flash("Password must be at least 8 characters long", category="error")
     elif password != confirm_password:
