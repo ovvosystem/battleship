@@ -250,3 +250,15 @@ class Gameboard:
             bool: True if the whole fleet has been sunk, False otherwise
         """
         return self.fleet.is_destroyed()
+    
+
+class Game:
+    """A class to represent a game"""
+
+    def __init__(self):
+        """Constructor method
+        
+        Creates both players' boards
+        """
+        player1_board = Gameboard()
+        player2_board = Gameboard()
