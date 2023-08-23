@@ -179,7 +179,7 @@ li {
 
 .alert {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     left: calc(50% - 164px);
     width: 300px;
     padding: 12px;
@@ -188,6 +188,10 @@ li {
 
     color: #fff;
     border-radius: 5px;
+
+    animation: fadeOut 2s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
 }
 
 .alert-error {
@@ -196,7 +200,13 @@ li {
 }
 
 .alert-success {
-    background-color: #35a535
+    border: 2px solid #0f380f;
+    background-color: #35a535;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 
