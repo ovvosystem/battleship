@@ -260,6 +260,6 @@ class Game:
         
         Creates both players' boards
         """
-        player1_board = Gameboard()
-        player2_board = Gameboard()
-        turn = 1
+        player1_board = Gameboard() #: Player 1's gameboard
+        player2_board = Gameboard() #: Player 2's gameboard
+        turn = 1 #: Turn number
