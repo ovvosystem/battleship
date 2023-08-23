@@ -83,5 +83,10 @@ def login():
 @auth.route("/logout")
 @login_required
 def logout():
+    """Logs out the user
+    
+    Returns:
+        redirect: redirect to the login page
+    """
     logout_user()
     return redirect("/auth/login")
