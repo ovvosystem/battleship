@@ -15,10 +15,12 @@
     <nav class="flex flex-center">
         <div id="nav-container" class="flex flex-1 flex-center gap-large text-s text-center font-roboto">
             <ul class="flex flex-1 flex-end gap-medium">
-                <li><a href="https://github.com/ovvosystem/battleship" target="_blank" class="flex flex-center gap-small">
-                    <img src="{{ url_for('static', filename='images/github-mark-white.svg') }}">
-                    <p>Source Code</p>
-                </a></li>
+                <li class="item-center">
+                    <a href="https://github.com/ovvosystem/battleship" target="_blank" class="flex flex-center gap-small">
+                        <img src="{{ url_for('static', filename='images/github-mark-white.svg') }}">
+                        <p>Source Code</p>
+                    </a>
+                </li>
             </ul>
             <a href="/">
                 <div id="logo" class="flex flex-center gap-small">
@@ -26,13 +28,13 @@
                     <h1>BATTLESHIP</h1>   
                 </div>
             </a>
-            <ul class="flex flex-1 flex-start gap-medium">
+            <ul class="flex flex-1 flex-start items-center gap-medium">
                 {% if user.is_authenticated %}
-                    <li><span>Welcome, <strong>{{ user.username }}</strong></span></li>
-                    <li><a href="/auth/logout">Logout</a></li>
+                    <li class="item-center"><span>Welcome, <strong>{{ user.username }}</strong></span></li>
+                    <li class="item-center"><a href="/auth/logout">Logout</a></li>
                 {% else %}
-                    <li><a href="/auth/register">Register</a></li>
-                    <li><a href="/auth/login">Login</a></li>
+                    <li class="item-center"><a href="/auth/register">Register</a></li>
+                    <li class="item-center"><a href="/auth/login">Login</a></li>
                 {% endif %}
             </ul>
         </div>
