@@ -12,6 +12,6 @@ def home():
     """
     return render_template("index.html", user=current_user)
 
-@views.route("/play")
+@views.route("/play", methods=["GET", "POST"])
 def play():
     return render_template("play.html", user=current_user)
