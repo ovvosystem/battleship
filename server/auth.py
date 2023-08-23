@@ -28,6 +28,8 @@ def register():
 
     if User.query.filter_by(username=username).first():
         flash("Username already taken", category="error")
+    elif " " in username:
+        flash("Username cannot contain spaces", category="error")
     elif len(username) < 4:
         flash("Username must be at least 4 characters long", category="error")
     elif len(username) > 20:
