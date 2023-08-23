@@ -53,6 +53,14 @@ def register():
 
 @auth.route("/login", methods=["GET", "POST"])
 def login():
+    """Renders the login page template and handles user login
+    
+    If inputted username and password correspond to a user in the database, logs in the user
+    
+    Returns:
+        template/redirect: either returns the rendered template on GET or failure to login,
+                           or redirects the user back to the homepage on successful login
+    """
     if request.method == "GET":
         return render_template("login.html", user=current_user)
     
