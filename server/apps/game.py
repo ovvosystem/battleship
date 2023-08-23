@@ -262,3 +262,4 @@ class Game:
         """
         player1_board = Gameboard()
         player2_board = Gameboard()
+        turn = 1
