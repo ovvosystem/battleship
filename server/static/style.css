@@ -307,10 +307,21 @@ li {
 
 #room-options button {
     padding: 20px;
+    
+    font-size: 2.5rem;
+
     color: #fff;
     background-color: #111827;
     border: none;
     border-radius: 25px;
+
+    cursor: pointer;
+    transition: all .2s ease-in-out; /* Animate button on hover */
+}
+
+#room-options button:hover {
+    transform: scale(1.1);
+    background-color: #030920;
 }
 
 #room-options input {
