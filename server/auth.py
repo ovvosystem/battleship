@@ -16,7 +16,7 @@ def register():
     homepage with a success message
     
     Returns:
-        template/redirect: either returns the rendered template or GET or failure to register,
+        template/redirect: either returns the rendered template on GET or failure to register,
                            or redirects the user back to the homepage on successful registering
     """
     if request.method == "GET":
