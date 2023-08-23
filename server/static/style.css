@@ -276,3 +276,51 @@ li {
     right: 0;
     background-color: #35a535
 }
+
+
+/* PLAY SCREEN RULES */
+
+
+#room-options {
+    max-width: 1000px;
+    justify-content: space-around;
+    color: #fff;
+}
+
+@media screen and (max-width: 750px) {
+    #room-options {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+#room-options > div:not(.divider) {
+    width: 300px;
+    height: 300px;
+}
+
+#room-options form {
+    height: 100%;
+}
+
+#room-options button {
+    padding: 20px;
+    color: #fff;
+    background-color: #111827;
+    border: none;
+    border-radius: 25px;
+}
+
+#room-options input {
+    width: 80%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.divider {
+    text-shadow: 0px 0px 25px #030920;
+}
