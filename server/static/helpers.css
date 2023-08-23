@@ -1,0 +1,82 @@
+
+
+/* FLEX CLASSES */
+
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.item-center {
+    align-self: center;
+}
+
+.gap-small {
+    gap: 6px;
+}
+
+.gap-medium {
+    gap: 12px;
+}
+
+.gap-large {
+    gap: 24px;
+}
+
+
+/* TEXT CLASSES */
+
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-impact {
+    font-family: Impact, sans-serif;
+    letter-spacing: 0.2rem;
+}
+
+.text-xl {
+    font-size: 5rem;
+}
+
+.text-l {
+    font-size: 3rem;
+}
+
+.text-m {
+    font-size: 1.75rem;
+}
+
+.text-s {
+    font-size: 1rem;
+}
+
+.text-bold {
+    font-weight: 800;
+}
+
+.text-center {
+    text-align: center;
+}
