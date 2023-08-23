@@ -11,3 +11,7 @@ def home():
         template: index.html
     """
     return render_template("index.html", user=current_user)
+
+@views.route("/play")
+def play():
+    return "Temporary message before template is ready"
