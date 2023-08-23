@@ -263,3 +263,6 @@ class Game:
         self.player1_board = Gameboard() #: Player 1's gameboard
         self.player2_board = Gameboard() #: Player 2's gameboard
         self.turn = 1 #: Turn number
+
+    def increment_turn(self):
+        self.turn += 1
