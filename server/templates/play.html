@@ -1,22 +1,20 @@
 {% extends "base.html" %} {% block title %}Play{% endblock %}
 {% block content %}
-<span class="background flex flex-center">
-    <div id="room-options" class="flex flex-1 flex-center font-roboto">
-        <div class="create-room flex flex-center">
-            <form method="POST" class="button-container flex flex-1">
-                <button name="create" class="flex-1"><h2>CREATE ROOM</h2></button>
-            </form>
-        </div>
-        <div class="divider flex flex-center text-l text-bold">OR</div>
-        <div class="join-room flex flex-center text-m">
-            <form method="POST" class="flex flex-1 flex-column gap-large">
-                <div class="flex flex-1 flex-column flex-center gap-medium">
-                    <label for="code" class="text-l text-bold text-center">Code:</label>
-                    <input class="text-center text-bold" type="text" name="code" maxlength="6">
-                </div>
-                <button name="join" class="flex-1"><h2>JOIN</h2></button>
-            </form>
-        </div>
+<div id="room-options" class="flex flex-1 flex-center font-roboto">
+    <div class="create-room flex flex-center">
+        <form method="POST" class="button-container flex flex-1">
+            <button name="create" class="flex-1"><h2>CREATE ROOM</h2></button>
+        </form>
     </div>
-</span>
+    <div class="divider flex flex-center text-l text-bold">OR</div>
+    <div class="join-room flex flex-center text-m">
+        <form method="POST" class="flex flex-1 flex-column gap-large">
+            <div class="flex flex-1 flex-column flex-center gap-medium">
+                <label for="code" class="text-l text-bold text-center">Code:</label>
+                <input class="text-center text-bold" type="text" name="code" maxlength="6">
+            </div>
+            <button name="join" class="flex-1"><h2>JOIN</h2></button>
+        </form>
+    </div>
+</div>
 {% endblock %}

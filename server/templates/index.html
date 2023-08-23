@@ -1,20 +1,9 @@
 {% extends "base.html" %} {% block title %}Battleship{% endblock %}
 {% block content %}
-<span class="background flex flex-center">
-    <div id="main-menu" class="flex flex-1 flex-center flex-column gap-large">
-        <h1 id="title" class="flex flex-center gap-small font-impact">BATTLESHIP</h1>
-        <form action="/play" id="button-container" class="flex font-roboto">
-            <button class="text-l text-bold">PLAY</button>
-        </form>
-    </div>
-</span>
-
-{% with messages = get_flashed_messages(category_filter=["success"]) %}
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-success text-center font-roboto"><strong>Success:</strong> {{ message }}</div>
-    {% endfor %}
-{% endif %}
-{% endwith %}
-
+<div id="main-menu" class="flex flex-1 flex-center flex-column gap-large">
+    <h1 id="title" class="flex flex-center gap-small font-impact">BATTLESHIP</h1>
+    <form action="/play" id="button-container" class="flex font-roboto">
+        <button class="text-l text-bold">PLAY</button>
+    </form>
+</div>
 {% endblock %}
