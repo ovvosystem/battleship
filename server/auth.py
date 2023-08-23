@@ -9,6 +9,16 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/register", methods=["GET", "POST"])
 def register():
+    """Renders the register page template and handles user registration
+    
+    On bad input, flashes an error message explaining what must be changed. 
+    On success, hashes the password, adds user to the database and redirects the user to the
+    homepage with a success message
+    
+    Returns:
+        template/redirect: either returns the rendered template or GET or failure to register,
+                           or redirects the user back to the homepage on successful registering
+    """
     if request.method == "GET":
         return render_template("register.html", user=current_user)
     
