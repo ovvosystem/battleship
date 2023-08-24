@@ -1,7 +1,7 @@
 import random
 from string import ascii_uppercase
 
-from flask import Blueprint, render_template, request, flash, session
+from flask import Blueprint, render_template, request, flash, session, redirect
 from flask_login import login_required, current_user
 
 from server.apps.game import Game
@@ -54,5 +54,15 @@ def play():
             rooms[room] = {"players": 0, "game": game}
         
         session["room"] = room
+        return redirect("/room")
 
     return render_template("play.html", user=current_user)
+
+@views.route("/room")
+@login_required
+def room():
+    room = session.get("room")
+    if room is None or room not in rooms:
+        return redirect("/")
+    
+    return "Room"
