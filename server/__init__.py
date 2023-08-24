@@ -15,8 +15,8 @@ if ENV_FILE:
 db = SQLAlchemy()
 DB_NAME = env.get("DB_NAME")
 
-# SocketIO
-socketio = None # Initialize socketio variable
+# SocketIO variables
+socketio = SocketIO()
 
 def create_app():
     """Creates and configures the app
@@ -28,7 +28,7 @@ def create_app():
     app.config["SECRET_KEY"] = env.get("SECRET_KEY")
     app.config["SQLALCHEMY_DATABASE_URI"] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
-    socketio = SocketIO(app)
+    socketio.init_app(app)
 
     from server.views import views
     from server.auth import auth
