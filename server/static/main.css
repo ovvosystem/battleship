@@ -263,3 +263,38 @@ li {
 .divider {
     text-shadow: 0px 0px 25px #030920;
 }
+
+
+/* GAME ROOM RULES */
+
+
+#game-container {
+    max-width: 1000px;
+    padding: 20px;
+    gap: 50px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    aspect-ratio: 1;
+}
+
+.grid-element {
+    background-color: #fff;
+    color: #111827;
+    border: 1px solid #111827;
+}
+
+.ship-tile {
+    background-color: aqua;
+}
+
+.miss-tile {
+    background-color: gray;
+}
+
+.hit-tile {
+    background-color: red;
+}
