@@ -7,16 +7,34 @@ socketio.on("update", (boards) => {
     playerBoard.innerHTML = "";
     opponentBoard.innerHTML = "";
 
+    let x = 0;
+    let y = 0;
+
     for (row of boards.player_board) {
         for (tile of row) {
-            playerBoard.appendChild(renderTile(tile));
+            tileDiv = renderTile(tile);
+            tileDiv.dataset.x = x;
+            tileDiv.dataset.y = y;
+            playerBoard.appendChild(tileDiv);
+            x++;
         }
+        x = 0;
+        y++;
     }
+
+    x = 0;
+    y = 0;
 
     for (row of boards.opponent_board) {
         for (tile of row) {
-            opponentBoard.appendChild(renderTile(tile));
+            tileDiv = renderTile(tile);
+            tileDiv.dataset.x = x;
+            tileDiv.dataset.y = y;
+            opponentBoard.appendChild(tileDiv);
+            x++;
         }
+        x = 0;
+        y++;
     }
 })
 
