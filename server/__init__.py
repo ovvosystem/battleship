@@ -4,6 +4,7 @@ from dotenv import find_dotenv, load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_socketio import SocketIO
 
 # Load environment variables
 ENV_FILE = find_dotenv()
@@ -13,6 +14,9 @@ if ENV_FILE:
 # Database variables
 db = SQLAlchemy()
 DB_NAME = env.get("DB_NAME")
+
+# SocketIO
+socketio = None # Initialize socketio variable
 
 def create_app():
     """Creates and configures the app
@@ -24,6 +28,7 @@ def create_app():
     app.config["SECRET_KEY"] = env.get("SECRET_KEY")
     app.config["SQLALCHEMY_DATABASE_URI"] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
+    socketio = SocketIO(app)
 
     from server.views import views
     from server.auth import auth
