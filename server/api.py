@@ -35,3 +35,4 @@ def connect(auth):
             return
     
     join_room(room)
+    emit("update", get_boards(room), to=request.sid)
