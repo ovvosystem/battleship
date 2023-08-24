@@ -65,4 +65,4 @@ def room():
     if room is None or room not in rooms:
         return redirect("/")
     
-    return "Room"
+    return render_template("room.html", user=current_user, code=room)
