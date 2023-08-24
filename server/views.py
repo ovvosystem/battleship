@@ -26,11 +26,13 @@ def home():
     Returns:
         template: index.html
     """
+    session.clear()
     return render_template("index.html", user=current_user)
 
 @views.route("/play", methods=["GET", "POST"])
 @login_required
 def play():
+    session.clear()
     if request.method == "POST":
         create = request.form.get("create", False)
         join = request.form.get("join", False)
