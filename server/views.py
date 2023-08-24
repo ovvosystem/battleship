@@ -1,7 +1,7 @@
 import random
 from string import ascii_uppercase
 
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, session
 from flask_login import login_required, current_user
 
 from server.apps.game import Game
@@ -37,14 +37,20 @@ def play():
         code = request.form.get("code")
         if code:
             code = code.upper()
+        room = None
 
-        if join != False and not code:
-            flash("Please input a room code to join", category="error")
-        elif join != False and code not in rooms:
-            flash(f'No room of code "{code}"', category="error")
+        if join != False:
+            if not code:
+                flash("Please input a room code to join", category="error")
+            elif code not in rooms:
+                flash(f'No room of code "{code}"', category="error")
+            room = code
+        
         elif create != False:
             room = generate_code(6)
             game = Game()
             rooms[room] = {"players": 0, "game": game}
+        
+        session["room"] = room
 
     return render_template("play.html", user=current_user)
