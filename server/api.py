@@ -23,6 +23,13 @@ def get_boards(room, user):
     elif user == rooms[room]["challenger"]["user_id"]:
         return {"player_board": game.player2_board.get_board(),
                 "opponent_board": game.player1_board.get_secret_board()}
+    
+def attack_coords(coords, room, user):
+    game = rooms[room]["game"]
+    if user ==  rooms[room]["creator"]["user_id"]:
+        return game.player2_board.attack_coordinate([coords[1], coords[0]])
+    if user == rooms[room]["challenger"]["user_id"]:
+        return game.player1_board.attack_coordinate([coords[1], coords[0]])
 
 
 # SocketIO events
@@ -62,3 +69,34 @@ def connect(auth):
         rooms[room]["challenger"] = {"user_id": user, "session_id": request.sid}
 
     emit("update", get_boards(room, user), to=request.sid)
+
+@socketio.on("attack")
+def attack(coords):
+    """Handles game attacks"""
+    coords = list(map(lambda coord: int(coord), coords)) # Converts coords into integers
+
+    if coords[0] < 0 or coords[0] > 9 or coords[1] < 0 or coords[1] > 9: # Checks for valid coords
+        return
+    
+    room = session.get("room")
+    user = current_user.get_id()
+    game = rooms[room]["game"]
+    creator = rooms[room]["creator"]
+    challenger = rooms[room]["challenger"]
+
+    if not creator or not challenger: # Wait until all users are connected to room
+        return
+
+    # Checks if it is user's turn
+    if game.turn % 2 == 1 and user == creator["user_id"]:
+        if not attack_coords(coords, room, user):
+            return
+        game.increment_turn()
+    elif game.turn % 2 == 0 and user == challenger["user_id"]:
+        if not attack_coords(coords, room, user):
+            return
+        game.increment_turn()
+
+    # Updates the boards
+    emit("update", get_boards(room, creator["user_id"]), to=creator["session_id"])
+    emit("update", get_boards(room, challenger["user_id"]), to=challenger["session_id"])

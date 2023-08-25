@@ -36,6 +36,15 @@ socketio.on("update", (boards) => {
         x = 0;
         y++;
     }
+
+    opponentTiles = opponentBoard.querySelectorAll(".grid-element");
+    for (const tile of opponentTiles) {
+        tile.addEventListener("click", (event) => {
+            const tile = event.currentTarget;
+            const coords = [tile.dataset.x, tile.dataset.y];
+            socketio.emit("attack", coords);
+    });
+}
 })
 
 function renderTile(tile) {
