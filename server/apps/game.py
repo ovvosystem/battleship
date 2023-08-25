@@ -1,4 +1,5 @@
 from random import choice, randrange
+from copy import deepcopy
 
 class Ship:
     """A class used to represent a ship"""
@@ -122,7 +123,7 @@ class Gameboard:
         Returns:
             list of list: self.board without ship positions
         """
-        secret_board = self.board.copy()
+        secret_board = deepcopy(self.board)
         for row in range(len(secret_board)):
             for column in range(len(secret_board)):
                 if secret_board[row][column] == "S":
