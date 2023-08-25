@@ -11,6 +11,11 @@ api = Blueprint("api", __name__)
 # Game events
 
 def get_boards(room, user):
+    """Retrieves the correct board information for an user in a room
+    
+    Returns:
+        dict: player and opponent's boards
+    """
     game =  rooms[room]["game"]
     if user ==  rooms[room]["creator"]["user_id"]:
         return {"player_board": game.player1_board.get_board(),
