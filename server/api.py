@@ -29,6 +29,7 @@ def get_boards(room, user):
 
 @socketio.on("connect")
 def connect(auth):
+    """Handles connection to room and emits a game state update upon connection"""
     room = session.get("room")
     user = current_user.get_id()
 
