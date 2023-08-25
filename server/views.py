@@ -51,7 +51,7 @@ def play():
         elif create != False:
             room = generate_code(6)
             game = Game()
-            rooms[room] = {"creator": current_user, "challenger": None, "game": game}
+            rooms[room] = {"creator": {}, "challenger": {}, "game": game}
         
         session["room"] = room
         return redirect("/room")
