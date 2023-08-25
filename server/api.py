@@ -19,10 +19,10 @@ def get_boards(room, user):
     game =  rooms[room]["game"]
     if user ==  rooms[room]["creator"]["user_id"]:
         return {"player_board": game.player1_board.get_board(),
-                "opponent_board": game.player2_board.get_board()}
+                "opponent_board": game.player2_board.get_secret_board()}
     elif user == rooms[room]["challenger"]["user_id"]:
         return {"player_board": game.player2_board.get_board(),
-                "opponent_board": game.player1_board.get_board()}
+                "opponent_board": game.player1_board.get_secret_board()}
 
 
 # SocketIO events
