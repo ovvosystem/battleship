@@ -4,6 +4,9 @@ const playerBoard = document.getElementById("player-board");
 const opponentBoard = document.getElementById("opponent-board");
 
 socketio.on("update", (boards) => {
+    playerBoard.innerHTML = "";
+    opponentBoard.innerHTML = "";
+
     for (let y = 0; y < boards.player_board.length; y++) {
         for (let x = 0; x < boards.player_board.length; x++) {
             tile = boards.player_board[y][x]

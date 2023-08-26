@@ -337,6 +337,8 @@ li {
     height: 75%;
     background-color: var(--blue);
     border-radius: 50%;
+    animation-name: render-tile;
+    animation-duration: 0.7s
 }
 
 .miss-tile {
@@ -344,6 +346,8 @@ li {
     height: 75%;
     background-color: gray;
     border-radius: 50%;
+    animation-name: render-tile;
+    animation-duration: 0.7s
 }
 
 .hit-tile {
@@ -351,4 +355,11 @@ li {
     height: 75%;
     background-color: red;
     border-radius: 50%;
+    animation-name: render-tile;
+    animation-duration: 0.5s
+}
+
+@keyframes render-tile {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }
