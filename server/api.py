@@ -96,6 +96,8 @@ def attack(coords):
         if not attack_coords(coords, room, user):
             return
         game.increment_turn()
+    else:
+        return
 
     # Updates the boards
     emit("update", get_boards(room, creator["user_id"]), to=creator["session_id"])
