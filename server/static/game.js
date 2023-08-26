@@ -54,11 +54,11 @@ function renderTile(tile) {
     tileDiv.classList.add("grid-element", "flex", "flex-center");
 
     if (tile === "S") {
-        tileDiv.innerHTML = '<div class="ship-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked ship-tile"></div>'
     } else if (tile === "O") {
-        tileDiv.innerHTML = '<div class="miss-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked miss-tile"></div>'
     } else if (tile === "X") {
-        tileDiv.innerHTML = '<div class="hit-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked hit-tile"></div>'
     }
 
     return tileDiv;

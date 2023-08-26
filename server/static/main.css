@@ -332,31 +332,24 @@ li {
     border: 1px dashed #777;
 }
 
-.ship-tile {
+.attacked {
     width: 75%;
     height: 75%;
-    background-color: var(--blue);
-    border-radius: 50%;
-    animation-name: render-tile;
-    animation-duration: 0.7s
-}
-
-.miss-tile {
-    width: 75%;
-    height: 75%;
-    background-color: gray;
-    border-radius: 50%;
-    animation-name: render-tile;
-    animation-duration: 0.7s
-}
-
-.hit-tile {
-    width: 75%;
-    height: 75%;
-    background-color: red;
     border-radius: 50%;
     animation-name: render-tile;
     animation-duration: 0.5s
+}
+
+.ship-tile {
+    background-color: var(--blue);
+}
+
+.miss-tile {
+    background-color: gray;
+}
+
+.hit-tile {
+    background-color: red;
 }
 
 @keyframes render-tile {
