@@ -57,12 +57,12 @@ def connect(auth):
     # Checks if the user is already connected or if the room is full
     if rooms[room]["creator"]: 
         if user == rooms[room]["creator"]["user_id"]:
-            emit("update", get_boards(room, user), to=request.sid)
+            emit("getBoards", get_boards(room, user), to=request.sid)
             return
         
         if rooms[room]["challenger"]:
             if user ==  rooms[room]["challenger"]["user_id"]:
-                emit("update", get_boards(room, user), to=request.sid)
+                emit("getBoards", get_boards(room, user), to=request.sid)
                 return
             else: # Room is full
                 return
