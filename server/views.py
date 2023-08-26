@@ -44,8 +44,10 @@ def play():
         if join != False:
             if not code:
                 flash("Please input a room code to join", category="error")
+                return render_template("play.html", user=current_user)
             elif code not in rooms:
                 flash(f'No room of code "{code}"', category="error")
+                return render_template("play.html", user=current_user)
             room = code
         
         elif create != False:
