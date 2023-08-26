@@ -53,6 +53,8 @@ def play():
         elif create != False:
             room = generate_code(6)
             game = Game()
+            game.player1_board.place_fleet()
+            game.player2_board.place_fleet()
             rooms[room] = {"creator": None, "challenger": None, "game": game}
         
         session["room"] = room

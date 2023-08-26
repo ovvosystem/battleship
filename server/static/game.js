@@ -3,7 +3,7 @@ socketio = io();
 const playerBoard = document.getElementById("player-board");
 const opponentBoard = document.getElementById("opponent-board");
 
-socketio.on("update", (boards) => {
+socketio.on("getBoards", (boards) => {
     playerBoard.innerHTML = "";
     opponentBoard.innerHTML = "";
 
@@ -30,6 +30,16 @@ socketio.on("update", (boards) => {
     opponentTiles = opponentBoard.querySelectorAll(".grid-element");
     for (const tile of opponentTiles) {
         tileClickEvent(tile);
+    }
+})
+
+socketio.on("update", (change) => {
+    const divPosition = (change.coords[1] * 10) + change.coords[0];
+    divTile = renderTile(change.status);
+    if (change.target) {
+        playerBoard.children.item(divPosition).innerHTML = divTile.innerHTML;
+    } else {
+        opponentBoard.children.item(divPosition).innerHTML = divTile.innerHTML;
     }
 })
 

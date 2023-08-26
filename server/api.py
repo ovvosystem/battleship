@@ -24,6 +24,13 @@ def get_boards(room, user):
         return {"player_board": game.player2_board.get_board(),
                 "opponent_board": game.player1_board.get_secret_board()}
     
+def get_tile(coords, room, user):
+    game = rooms[room]["game"]
+    if user ==  rooms[room]["creator"]["user_id"]:
+        return game.player2_board.get_board()[coords[1]][coords[0]]
+    if user ==  rooms[room]["challenger"]["user_id"]:
+        return game.player1_board.get_board()[coords[1]][coords[0]]
+    
 def attack_coords(coords, room, user):
     game = rooms[room]["game"]
     if user ==  rooms[room]["creator"]["user_id"]:
@@ -68,7 +75,7 @@ def connect(auth):
     elif not rooms[room]["challenger"]:
         rooms[room]["challenger"] = {"user_id": user, "session_id": request.sid}
 
-    emit("update", get_boards(room, user), to=request.sid)
+    emit("getBoards", get_boards(room, user), to=request.sid)
 
 @socketio.on("attack")
 def attack(coords):
@@ -83,6 +90,7 @@ def attack(coords):
     game = rooms[room]["game"]
     creator = rooms[room]["creator"]
     challenger = rooms[room]["challenger"]
+    target = None
 
     if not creator or not challenger: # Wait until all users are connected to room
         return
@@ -91,14 +99,18 @@ def attack(coords):
     if game.turn % 2 == 1 and user == creator["user_id"]:
         if not attack_coords(coords, room, user):
             return
+        target = challenger["session_id"]
         game.increment_turn()
     elif game.turn % 2 == 0 and user == challenger["user_id"]:
         if not attack_coords(coords, room, user):
             return
+        target = creator["session_id"]
         game.increment_turn()
     else:
         return
 
     # Updates the boards
-    emit("update", get_boards(room, creator["user_id"]), to=creator["session_id"])
-    emit("update", get_boards(room, challenger["user_id"]), to=challenger["session_id"])
+    emit("update", {"target": False, "coords": coords, "status": get_tile(coords, room, user)},
+         to=request.sid)
+    emit("update", {"target": True, "coords": coords, "status": get_tile(coords, room, user)},
+         to=target)
