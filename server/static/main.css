@@ -307,12 +307,23 @@ li {
 }
 
 .game-board {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
     aspect-ratio: 1;
+}
+
+@media screen and (max-width: 900px) {
+    #room-container {
+        padding-top: 100px;
+    }
+
+    #game-container {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 .grid-element {
@@ -322,13 +333,22 @@ li {
 }
 
 .ship-tile {
-    background-color: aqua;
+    width: 75%;
+    height: 75%;
+    background-color: var(--blue);
+    border-radius: 50%;
 }
 
 .miss-tile {
+    width: 75%;
+    height: 75%;
     background-color: gray;
+    border-radius: 50%;
 }
 
 .hit-tile {
+    width: 75%;
+    height: 75%;
     background-color: red;
+    border-radius: 50%;
 }

@@ -52,11 +52,11 @@ function renderTile(tile) {
     tileDiv.classList.add("grid-element", "flex", "flex-center");
 
     if (tile === "S") {
-        tileDiv.classList.add("ship-tile");
+        tileDiv.innerHTML = '<div class="ship-tile"></div>'
     } else if (tile === "O") {
-        tileDiv.classList.add("miss-tile");
+        tileDiv.innerHTML = '<div class="miss-tile"></div>'
     } else if (tile === "X") {
-        tileDiv.classList.add("hit-tile");
+        tileDiv.innerHTML = '<div class="hit-tile"></div>'
     }
 
     return tileDiv;
