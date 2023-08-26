@@ -3,6 +3,7 @@ from flask_login import current_user
 from flask_socketio import join_room, leave_room, emit
 
 from . import socketio
+from server.models import User
 from server.views import rooms
 
 api = Blueprint("api", __name__)
@@ -74,6 +75,12 @@ def connect(auth):
         rooms[room]["creator"] = {"user_id": user, "session_id": request.sid}
     elif not rooms[room]["challenger"]:
         rooms[room]["challenger"] = {"user_id": user, "session_id": request.sid}
+        creator = rooms[room]["creator"]
+        challenger = rooms[room]["challenger"]
+        creator_username = User.query.filter_by(id=creator["user_id"]).first().username
+        challenger_username = User.query.filter_by(id=challenger["user_id"]).first().username
+        emit("getOpponent", creator_username, to=challenger["session_id"])
+        emit("getOpponent", challenger_username, to=creator["session_id"])
 
     emit("getBoards", get_boards(room, user), to=request.sid)
 

@@ -33,6 +33,12 @@ socketio.on("getBoards", (boards) => {
     }
 })
 
+socketio.on("getOpponent", (opponent) => {
+    console.log(opponent);
+    username = document.querySelector(".opponent-area p");
+    username.textContent = opponent;
+})
+
 socketio.on("update", (change) => {
     const divPosition = (change.coords[1] * 10) + change.coords[0];
     divTile = renderTile(change.status);
