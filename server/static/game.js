@@ -34,7 +34,6 @@ socketio.on("getBoards", (boards) => {
 })
 
 socketio.on("getOpponent", (opponent) => {
-    console.log(opponent);
     username = document.querySelector(".opponent-area p");
     username.textContent = opponent;
 })
@@ -50,8 +49,15 @@ socketio.on("update", (change) => {
 })
 
 socketio.on("gameover", (winner) => {
+    const roomContainer = document.getElementById("room-container");
     const gameContainer = document.getElementById("game-container");
-    gameContainer.style.opacity = "0.5";
+    gameContainer.classList.add("gameover");
+    
+    const gameoverText = document.createElement("div");
+    gameoverText.classList.add("gameover-text", "flex", "flex-column", "gap-medium");
+    gameoverText.innerHTML = `<h1 class="text-xl text-center text-bold">GAME OVER</h1>
+                                <p class="text-l text-center text-bold">${winner} wins!</p>`;
+    roomContainer.insertBefore(gameoverText, gameContainer);
 
     opponentTiles = opponentBoard.querySelectorAll(".grid-element");
     for (const tile of opponentTiles) {

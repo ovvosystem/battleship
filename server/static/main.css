@@ -356,3 +356,43 @@ li {
     from { transform: scale(0); }
     to { transform: scale(1); }
 }
+
+.gameover {
+    animation-name: gameover;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+
+.gameover-text {
+    color: var(--light);
+    animation-name: gameover-text;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+
+.gameover-text h1,
+.gameover-text p {
+    text-shadow: 0px 0px 16px 4px var(--dark-hover);
+}
+
+@keyframes gameover {
+    from { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    to { 
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}
+
+@keyframes gameover-text {
+    from { 
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
