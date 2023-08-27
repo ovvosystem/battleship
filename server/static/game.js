@@ -9,7 +9,7 @@ socketio.on("getBoards", (boards) => {
 
     for (let y = 0; y < boards.player_board.length; y++) {
         for (let x = 0; x < boards.player_board.length; x++) {
-            tile = boards.player_board[y][x]
+            tile = boards.player_board[y][x];
             tileDiv = renderTile(tile);
             tileDiv.dataset.x = x;
             tileDiv.dataset.y = y;
@@ -19,7 +19,7 @@ socketio.on("getBoards", (boards) => {
 
     for (let y = 0; y < boards.opponent_board.length; y++) {
         for (let x = 0; x < boards.opponent_board.length; x++) {
-            tile = boards.opponent_board[y][x]
+            tile = boards.opponent_board[y][x];
             tileDiv = renderTile(tile);
             tileDiv.dataset.x = x;
             tileDiv.dataset.y = y;
@@ -54,11 +54,11 @@ function renderTile(tile) {
     tileDiv.classList.add("grid-element", "flex", "flex-center");
 
     if (tile === "S") {
-        tileDiv.innerHTML = '<div class="attacked ship-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked ship-tile"></div>';
     } else if (tile === "O") {
-        tileDiv.innerHTML = '<div class="attacked miss-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked miss-tile"></div>';
     } else if (tile === "X") {
-        tileDiv.innerHTML = '<div class="attacked hit-tile"></div>'
+        tileDiv.innerHTML = '<div class="attacked hit-tile"></div>';
     }
 
     return tileDiv;
