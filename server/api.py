@@ -27,14 +27,14 @@ def get_boards(room, user):
     
 def get_tile(coords, room, user):
     game = rooms[room]["game"]
-    if user ==  rooms[room]["creator"]["user_id"]:
+    if user == rooms[room]["creator"]["user_id"]:
         return game.player2_board.get_board()[coords[1]][coords[0]]
-    if user ==  rooms[room]["challenger"]["user_id"]:
+    if user == rooms[room]["challenger"]["user_id"]:
         return game.player1_board.get_board()[coords[1]][coords[0]]
     
 def attack_coords(coords, room, user):
     game = rooms[room]["game"]
-    if user ==  rooms[room]["creator"]["user_id"]:
+    if user == rooms[room]["creator"]["user_id"]:
         return game.player2_board.attack_coordinate([coords[1], coords[0]])
     if user == rooms[room]["challenger"]["user_id"]:
         return game.player1_board.attack_coordinate([coords[1], coords[0]])
