@@ -55,7 +55,7 @@ def play():
             game = Game()
             game.player1_board.place_fleet()
             game.player2_board.place_fleet()
-            rooms[room] = {"creator": None, "challenger": None, "game": game}
+            rooms[room] = {"members": 0, "creator": None, "challenger": None, "game": game}
         
         session["room"] = room
         return redirect("/room")

@@ -1,6 +1,6 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, session
 from flask_login import current_user
-from flask_socketio import join_room, leave_room, emit
+from flask_socketio import join_room, leave_room, close_room, emit
 
 from . import socketio
 from server.models import User
@@ -55,20 +55,12 @@ def connect(auth):
         leave_room(room)
         return
     
-    # Checks if the user is already connected or if the room is full
-    if rooms[room]["creator"]: 
-        if user == rooms[room]["creator"]["user_id"]:
-            emit("getBoards", get_boards(room, user), to=request.sid)
-            return
-        
-        if rooms[room]["challenger"]:
-            if user ==  rooms[room]["challenger"]["user_id"]:
-                emit("getBoards", get_boards(room, user), to=request.sid)
-                return
-            else: # Room is full
-                return
+    # Checks if the room is full
+    if rooms[room]["members"] == 2:
+        return
 
     join_room(room)
+    rooms[room]["members"] += 1
 
     # Updates creator and challenger information when new user joins room
     if not rooms[room]["creator"]:
@@ -83,6 +75,16 @@ def connect(auth):
         emit("getOpponent", challenger_username, to=creator["session_id"])
 
     emit("getBoards", get_boards(room, user), to=request.sid)
+
+@socketio.on("disconnect")
+def disconnect():
+    room = session.get("room")
+    leave_room(room)
+
+    if room in rooms:
+        rooms[room]["members"] -= 1
+        if rooms[room]["members"] <= 0:
+            del rooms[room]
 
 @socketio.on("attack")
 def attack(coords):
@@ -125,3 +127,5 @@ def attack(coords):
     # Checks if the game is over
     if game.is_game_over():
         emit("gameover", current_user.username, to=room)
+        close_room(room)
+        del rooms[room]
