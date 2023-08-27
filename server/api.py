@@ -121,3 +121,7 @@ def attack(coords):
          to=request.sid)
     emit("update", {"target": True, "coords": coords, "status": get_tile(coords, room, user)},
          to=target)
+    
+    # Checks if the game is over
+    if game.is_game_over():
+        emit("gameover", current_user.username, to=room)

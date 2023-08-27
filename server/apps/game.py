@@ -267,3 +267,9 @@ class Game:
 
     def increment_turn(self):
         self.turn += 1
+
+    def is_game_over(self):
+        if self.player1_board.is_fleet_destroyed() or self.player2_board.is_fleet_destroyed():
+            return True
+        else:
+            return False

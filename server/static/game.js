@@ -29,7 +29,7 @@ socketio.on("getBoards", (boards) => {
 
     opponentTiles = opponentBoard.querySelectorAll(".grid-element");
     for (const tile of opponentTiles) {
-        tileClickEvent(tile);
+        tile.addEventListener("click", tileAttack);
     }
 })
 
@@ -49,6 +49,16 @@ socketio.on("update", (change) => {
     }
 })
 
+socketio.on("gameover", (winner) => {
+    const gameContainer = document.getElementById("game-container");
+    gameContainer.style.opacity = "0.5";
+
+    opponentTiles = opponentBoard.querySelectorAll(".grid-element");
+    for (const tile of opponentTiles) {
+        tile.removeEventListener("click", tileAttack);
+    }
+})
+
 function renderTile(tile) {
     const tileDiv = document.createElement("div");
     tileDiv.classList.add("grid-element", "flex", "flex-center");
@@ -64,10 +74,8 @@ function renderTile(tile) {
     return tileDiv;
 }
 
-function tileClickEvent(tile) {
-    tile.addEventListener("click", (event) => {
-        const tile = event.currentTarget;
-        const coords = [tile.dataset.x, tile.dataset.y];
-        socketio.emit("attack", coords);
-    });
+function tileAttack(event) {
+    const tile = event.currentTarget;
+    const coords = [tile.dataset.x, tile.dataset.y];
+    socketio.emit("attack", coords);
 }
