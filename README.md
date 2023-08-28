@@ -18,6 +18,13 @@ Battleship before, read the instructions below on how to play!
 - A room code system that allows you to play with friends
 - Real-time updates to the game boards
 
+## Roadmap
+
+- [X] Create authentication system
+- [X] Online rooms with socket.io
+- [ ] Indicate which player is next to attack on the screen
+- [ ] Add a way for players to manually place their ships
+
 ## Technology Stack
 
 ![Javascript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Python Badge](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Flask Badge](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white) ![SQLite Badge](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
