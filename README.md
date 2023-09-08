@@ -5,7 +5,7 @@ Battleship before, read the instructions below on how to play!
 
 ## Instructions
 
-- Access [Battleship Online](https://battleship-web-online-c1370e469085.herokuapp.com/)
+- Access [Battleship Online](https://battleship-online.fly.dev/)
 - Login or register an account in the website
 - Create a room and share the room code with a friend
 - After both players are in the room, take turns trying to guess where each others' ships may be
